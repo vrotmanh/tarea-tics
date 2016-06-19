@@ -1,0 +1,55 @@
+.jumbotron{
+    background-image:url("pink_rice.png");
+    background-attachment: fixed;
+    min-height: 300px;
+    margin-bottom:0px;  
+    padding: 200px;
+}
+.jumbotron2{
+    background-image:url("spacio2.png");
+    background-attachment: fixed;
+    min-height: 100px;
+    margin-bottom:0px;  
+    padding: 10px;
+}
+.top-header{
+        width:100%;
+        max-width:960px;
+        font:6em "Great Vibes", cursive;
+        color:Black;
+}
+
+.top-header2{
+        width:100%;
+        max-width:960px;
+        font:3em "Great Vibes", cursive;
+        color:Black;
+}
+
+.top-header3{
+        width:100%;
+        max-width:600px;
+        font:1em "Playball", cursive;
+        color:Black;
+}
+
+.top-header4{
+        width:100%;
+        max-width:850px;
+        font:1em "Playball", cursive;
+        color:Black;
+}
+
+.alt1{
+        background-color:rgba(255,255,0,0);	
+	padding: 10px;
+
+}
+.alt3{
+        background-color:#333;	
+	padding: 10px;
+        min-height:150px;
+        color:white;
+        text-align:center;
+
+}
