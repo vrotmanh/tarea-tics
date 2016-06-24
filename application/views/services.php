@@ -11,20 +11,49 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Amatic+SC"/>
 	<link href='https://fonts.googleapis.com/css?family=Indie+Flower|Pacifico|Yellowtail|Satisfy|Playball|Great+Vibes|Alex+Brush|Niconne|Fredericka+the+Great' rel='stylesheet' type='text/css'>
 	<link href="../../assets/css/estilo.css" rel="stylesheet">
+	<link rel="icon" type="image/png" href="../../assets/img/favicon.png" />
 </head>
 <body>
-	<div class="navbar-static-top navbar-inverse">
-	<div class="navbar-brand">
-	     Servicios
-	</div>
-	     <div class="container">
-			<div class="row">
-	        <div class="collapse navbar-collapse navHeaderCollapse"> <div class="navbar-form navbar-right" align="right">
-	        </div>
-	        </div>
-	        </div>
-	     </div>
-	</div>
+
+<div class="navbar-static-top navbar-inverse">
+     <div class="container">
+		<div class="row">
+        <div class="collapse navbar-collapse navHeaderCollapse"> 
+        <div class="navbar-form navbar-left" align="left">
+            <button style="display: inline;" class="btn btn-default" onclick="window.location.href='<?php echo site_url("user_controller/index");?>'">Inicio</button>
+        </div>
+        <div class="navbar-form navbar-right" align="right">
+          <?php if(isset($name)){ ?>
+            <?php if(isset($info)){ ?>
+              <p style="color: #DF4CA2; margin: 0 10px 0 0; font-size: 15px; display: inline;"> <?php echo $info; ?> </p>
+              <?php } ?>
+             <p style="color: white; margin: 0 0 0px; font-size: 17px; display: inline;"> Bienvenido, <?php echo $name." ".$lastname; ?> </p>
+             <button style="display: inline; margin-left: 10px;" class="btn btn-default" onclick="window.location.href='<?php echo site_url("user_controller/edit_profile");?>'">Editar Perfil</button>
+             <button style="display: inline; margin-left: 10px;" class="btn btn-default" onclick="window.location.href='<?php echo site_url("user_controller/logout");?>'">Cerrar Sesion</button>
+          <?php } else { ?>
+            <?php echo form_open('user_controller/login',array('class' => 'form-inline', 'style' => 'display: inline;')); ?>
+            <?php if(isset($error)){ ?>
+              <p style="color: red; margin: 0 10px 0 0; font-size: 15px; display: inline;"> <?php echo $error; ?> </p>
+              <?php } ?>
+              <?php if(isset($info)){ ?>
+                <p style="color: #DF4CA2; margin: 0 10px 0 0; font-size: 15px; display: inline;"> <?php echo $info; ?> </p>
+                <?php } ?>
+             <div class="form-group">
+               <?php echo form_input(array('id' => 'dusername', 'class' => 'form-control', 'placeholder' => 'Usuario', 'name' => 'dusername')); ?>
+             </div>
+             <div class="form-group">
+               <?php echo form_password(array('id' => 'dpassword', 'class' => 'form-control', 'placeholder' => 'Contraseña', 'name' => 'dpassword')); ?>
+             </div>
+             <?php echo form_submit(array('id' => 'submit', 'value' => 'Iniciar','class' => "btn btn-default")); ?>
+             <?php echo form_close();?>
+             <button style="display: inline;" class="btn btn-default" onclick="window.location.href='<?php echo site_url("user_controller/register");?>'">Registrarse</button>
+          <?php } ?>
+        </div>
+        </div>
+        </div>
+     </div>
+</div>
+
 
 	   <div class="jumbotron">
 	   <div class="container">

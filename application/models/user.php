@@ -27,20 +27,22 @@
 			$this->phone = $_POST['dphone'];
 			$this->admin = 0;
 			$this->ban = 0;
+			$this->avatar = $_POST['imagepath'];
 			$this->register_date = date('Y-m-d H:y:s', time());
 			$this->last_login = date('Y-m-d H:y:s', time());
-			$this->db->insert('users', $this);
+			return $this->db->insert('users', $this);
 
     }
 
-	function edit() {
+	function edit($username) {
 
 		$sql = "UPDATE users
-				SET name = ".$name.",
-					lastname = ".$lastname.",
-					avatar = ".$avatar.",
-					email = ".$email.",
-					phone = ".$phone."
+				SET name = ".$_POST['ename'].",
+					lastname = ".$_POST['elname'].",
+					avatar = ".$_POST['eavatar'].",
+					password = ".$_POST['epassword'].",
+					email = ".$_POST['eemail'].",
+					phone = ".$_POST['ephone']."
 				WHERE username = ".$username;
 		$qry = $this->db->query($sql);
 
@@ -102,6 +104,7 @@
 					'email' => $row->email,
 					'phone' => $row->phone,
 					'ban' => $row->ban,
+					'avatar' => $row->avatar,
 					'last_login' => $row->last_login
 				);
 				$result[$index] = $aux;

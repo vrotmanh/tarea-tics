@@ -36,5 +36,32 @@
 			$this->db->insert('reservations', $this);
 
     }
+
+    function get_all() {
+		$sql = "SELECT *
+				FROM reservations";
+		$qry = $this->db->query($sql);
+		if ($qry->num_rows() > 0) {
+			$index = 0;
+			$result = array();
+			foreach ($qry->result() as $row) {
+				$aux = array(
+					'name' => $row->name,
+					'lastname' => $row->lastname,
+					'date' => $row->date,
+					'block' => $row->block,
+					'phone' => $row->phone,
+					'email' => $row->email,
+					'service' => $row->service,
+					'comment' => $row->comment
+				);
+				$result[$index] = $aux;
+				$index++;
+			}
+			return $result;
+		} else {
+			return null;
+		}
+	}
 }
 ?>

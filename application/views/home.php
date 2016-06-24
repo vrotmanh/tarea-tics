@@ -12,6 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Amatic+SC"/>
 <link href='https://fonts.googleapis.com/css?family=Indie+Flower|Pacifico|Yellowtail|Satisfy|Playball|Great+Vibes|Alex+Brush|Niconne|Fredericka+the+Great' rel='stylesheet' type='text/css'>
 <link href="../../assets/css/estilo.css" rel="stylesheet">
+<link rel="icon" type="image/png" href="../../assets/img/favicon.png" />
 </head>
 
 <body>
@@ -19,12 +20,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="navbar-static-top navbar-inverse">
      <div class="container">
 		<div class="row">
-        <div class="collapse navbar-collapse navHeaderCollapse"> <div class="navbar-form navbar-right" align="right">
+        <div class="collapse navbar-collapse navHeaderCollapse"> 
+        <div class="navbar-form navbar-left" align="left">
+            <button style="display: inline;" class="btn btn-default" onclick="window.location.href='<?php echo site_url("user_controller/index");?>'">Inicio</button>
+        </div>
+        <div class="navbar-form navbar-right" align="right">
           <?php if(isset($name)){ ?>
             <?php if(isset($info)){ ?>
               <p style="color: #DF4CA2; margin: 0 10px 0 0; font-size: 15px; display: inline;"> <?php echo $info; ?> </p>
               <?php } ?>
              <p style="color: white; margin: 0 0 0px; font-size: 17px; display: inline;"> Bienvenido, <?php echo $name." ".$lastname; ?> </p>
+             <button style="display: inline; margin-left: 10px;" class="btn btn-default" onclick="window.location.href='<?php echo site_url("user_controller/edit_profile");?>'">Editar Perfil</button>
              <button style="display: inline; margin-left: 10px;" class="btn btn-default" onclick="window.location.href='<?php echo site_url("user_controller/logout");?>'">Cerrar Sesion</button>
           <?php } else { ?>
             <?php echo form_open('user_controller/login',array('class' => 'form-inline', 'style' => 'display: inline;')); ?>
@@ -62,7 +68,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <div class="jumbotron">
     <div class="container">
-      <h1 class="top-header col-md-offset-4">Quienes somos</h1>
+      <h1 class="top-header col-md-offset-4">Quiénes somos</h1>
       <br>
     </div>
     <div class="row padding">
@@ -70,8 +76,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <img src="../../assets/img/spacio2.jpg" class="img-responsive img-thumbnail"  alt="sede" width= "1000000" height="1000000"/>
         </div>
         <div class="col-md-6">
-           <p class="top-header3 text-justify">Somos una empresa compromedita con tu bienestar con servicios pensados para tu cuerpo y alma.<br>Descubre todo lo que tenemos para ti...</p>
-		   <center><button type="submit" name="reserve" class="btn btn-info">Conocer más</button><center>
+           <p class="top-header3 text-justify">Somos una empresa comprometida con tu bienestar, con servicios pensados para tu cuerpo y alma. <br>Descubre todo lo que tenemos para ti...</p>
+		   <center><button type="submit" name="reserve" class="btn btn-info" onclick="window.location.href='<?php echo site_url("layouts_controller/services");?>'">Conocer más</button><center>
         </div>
     </div>
     </div>

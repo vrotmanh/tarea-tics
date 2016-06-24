@@ -19,7 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="navbar-static-top navbar-inverse">
      <div class="container">
     <div class="row">
-        <div class="collapse navbar-collapse navHeaderCollapse">
+        <div class="collapse navbar-collapse navHeaderCollapse"> 
         <div class="navbar-form navbar-left" align="left">
             <button style="display: inline;" class="btn btn-default" onclick="window.location.href='<?php echo site_url("user_controller/index");?>'">Inicio</button>
         </div>
@@ -30,10 +30,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <?php } ?>
              <p style="color: white; margin: 0 0 0px; font-size: 17px; display: inline;"> Bienvenido, <?php echo $name." ".$lastname; ?> </p>
              <button style="display: inline; margin-left: 10px;" class="btn btn-default" onclick="window.location.href='<?php echo site_url("user_controller/logout");?>'">Cerrar Sesion</button>
-          <?php } else { ?>
+            <?php } else { ?>
             <?php echo form_open('user_controller/login',array('class' => 'form-inline', 'style' => 'display: inline;')); ?>
             <?php if(isset($error)){ ?>
-              <p style="color: red; margin: 0 10px 0 0; font-size: 15px; display: inline;"> <?php echo print_r($error); ?> </p>
+              <p style="color: red; margin: 0 10px 0 0; font-size: 15px; display: inline;"> <?php echo $error; ?> </p>
               <?php } ?>
               <?php if(isset($info)){ ?>
                 <p style="color: #DF4CA2; margin: 0 10px 0 0; font-size: 15px; display: inline;"> <?php echo $info; ?> </p>
@@ -64,57 +64,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <div class="container padding-top-10">
     <div class="panel panel-danger">
       <div class="panel-heading">
-        <?php if (isset($error)) { echo print_r($error); }
+        <?php if (isset($error)) { echo $error; }
               else {
                 echo "Por Favor Llene Todos Los Campos";
               }?>
       </div>
       <div class="panel-body">
 
-        <?php echo form_open_multipart('user_controller/save_register'); ?>
-          <?php echo form_label('Nombre: ', 'dname'); ?>
+        <?php echo form_open('user_controller/edit_user'); ?>
+          <?php echo form_label('Nombre: ', 'ename'); ?>
           <div class="row">
             <div class="col-md-6 padding-top-10">
-              <?php echo form_input(array('id' => 'dname', 'class' => 'form-control', 'placeholder' => 'Primer Nombre', 'name' => 'dname')); ?>
+              <?php echo form_input(array('id' => 'ename', 'class' => 'form-control', 'placeholder' => 'Primer Nombre', 'name' => 'ename')); ?>
             </div>
             <div class="col-md-6 padding-top-10">
-              <?php echo form_input(array('id' => 'dlname', 'class' => 'form-control', 'placeholder' => 'Apellido', 'name' => 'dlname')); ?>
+              <?php echo form_input(array('id' => 'elname', 'class' => 'form-control', 'placeholder' => 'Apellido', 'name' => 'elname')); ?>
               </div>
 
               <div class="col-md-6 padding-top-10">
-              <?php echo form_label('Avatar: ', 'davatar'); ?>
-              <input type="file" class="form-control" name="userfile" size="20" >
+              <?php echo form_label('Avatar: ', 'eavatar'); ?>
+              <input type="file" class="form-control" id="eavatar" >
               </div>
-              <div class="col-md-6 padding-top-10">
-              <?php echo form_label('Telefono: ', 'dphone'); ?>
-              <?php echo form_input(array('id' => 'dphone', 'class' => 'form-control', 'placeholder' => 'Tu Numero Telefonico', 'name' => 'dphone')); ?>
-              </div>
+
+            <div class="col-md-6 padding-top-10">
+              <?php echo form_label('Contraseña: ', 'epassword'); ?>
+              <?php echo form_input(array('id' => 'epassword', 'type' => 'password', 'class' => 'form-control', 'placeholder' => 'Escribe tu Contraseña', 'name' => 'epassword')); ?>
+            </div>
             </div>
 
 			<div class="row">
             <div class="col-md-6 padding-top-10">
-              <?php echo form_label('Email: ', 'demail'); ?>
-              <?php echo form_input(array('id' => 'demail', 'class' => 'form-control', 'placeholder' => 'Direccion Email', 'name' => 'demail')); ?>
+              <?php echo form_label('Email: ', 'eemail'); ?>
+              <?php echo form_input(array('id' => 'eemail', 'class' => 'form-control', 'placeholder' => 'Direccion Email', 'name' => 'eemail')); ?>
             </div>
             <div class="col-md-6 padding-top-10">
-              <?php
-                $options = array(
-                          1  => 'Hombre',
-                          0    => 'Mujer',
-                        );
-                echo form_label('Sexo: ', 'dgender');
-                echo form_dropdown('dgender', $options, 'large', 'class="form-control", id="dgender"');
-              ?>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6 padding-top-10">
-              <?php echo form_label('Contraseña: ', 'dpassword'); ?>
-              <?php echo form_input(array('id' => 'dpassword', 'type' => 'password', 'class' => 'form-control', 'placeholder' => 'Escribe tu Contraseña', 'name' => 'dpassword')); ?>
-            </div>
-            <div class="col-md-6 padding-top-10">
-              <?php echo form_label('Nombre de Usuario: ', 'dusername'); ?>
-              <?php echo form_input(array('id' => 'dusername', 'class' => 'form-control', 'placeholder' => 'Nombre de Usuario', 'name' => 'dusername')); ?>
+              <?php echo form_label('Teléfono: ', 'ephone'); ?>
+              <?php echo form_input(array('id' => 'ephone', 'class' => 'form-control', 'placeholder' => 'Nombre de Usuario', 'name' => 'ephone')); ?>
             </div>
           </div>
           <div class="row">
@@ -127,7 +112,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </div>
           <div class="row">
             <div class="col-md-2 col-md-offset-5">
-              <?php echo form_submit(array('id' => 'submit', 'value' => 'Registrarse','class' => "btn btn-success")); ?>
+              <?php echo form_submit(array('id' => 'submit', 'value' => 'Editar','class' => "btn btn-success")); ?>
             </div>
           </div>
         <?php echo form_close();?>
@@ -139,7 +124,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </div>
  <div class="alt3">
          <div class="container">
-             <footer>&copy; Grupo Cualquiera Sea Nuestro Numero<br><a href="#">Volver arriba</a></footer>
+             <footer>&copy; Grupo 7<br><a href="#">Volver arriba</a></footer>
          </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
